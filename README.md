@@ -13,15 +13,6 @@ read the specs before acting and are corrected by them — no change begins
 before the spec reflects it, and every business rule has an ID cited in
 code, tests, and commits.
 
-## Why this kit has no demo app
-
-This kit is deliberately **not** built around one fixed demo application.
-The 3-day agenda's labs each bring their own codebase or scenario (a legacy
-module, a case-management app the trainees design themselves, production
-incidents, etc.), so the material here — specs, standards, skills, hooks —
-is written to apply to whatever the trainees are building that day, not to
-one pre-built repo.
-
 The material is written for the team's actual production stack, not kept
 generic:
 
