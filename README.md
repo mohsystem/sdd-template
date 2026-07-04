@@ -1,7 +1,6 @@
 # SDD Skills Kit — AI Enablement Program
 
-This folder is a **Specification-Driven Development (SDD) skills kit**, not a
-code sample despite the parent folder's name. It exists to weave one
+This folder is a **Specification-Driven Development (SDD) skills kit**. It exists to weave one
 methodology through all three days of the AI Enablement agenda instead of
 teaching AI tool tricks in isolation.
 
