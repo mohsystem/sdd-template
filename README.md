@@ -28,25 +28,6 @@ constraints, `<g:each>`/`encodeAsHTML()` in GSP, etc.) instead of bracketed
 placeholders — copy them into a real repo and they should mostly just work,
 with project-specific naming substituted in.
 
-## How it threads through the 3 days
-
-See [`facilitator/AGENDA-SKILL-MAP.md`](facilitator/AGENDA-SKILL-MAP.md) for
-the full row-by-row mapping. In short:
-
-- **Day 1** — trainees write the first spec (with BR-IDs) during the
-  Requirements Analysis lab, and generate docs from it during the
-  Documentation lab.
-- **Day 2** — that same spec drives the Solution Design lab (produces
-  `plan.md`), the Code Generation lab (implements against BR-IDs), the
-  Debugging lab (root-causes against the spec, not guesswork), and the Code
-  Review lab (reviews against `docs/standards/`).
-- **Day 3** — the spec's BR-IDs drive test planning and test-case generation
-  (tests named `BR-n: ...`), defect analysis (triage against which BR broke),
-  and release automation (release notes cite BR-IDs).
-
-One spec, accumulating BR-IDs, carried across all three days — that's the
-throughline this kit is built to support.
-
 ## Contents
 
 | Path | Purpose |
