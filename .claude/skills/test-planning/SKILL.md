@@ -29,7 +29,7 @@ needs a plan entry, full stop.
    objects, oversized/invalid GSP form submissions) each deserve their own
    plan line.
 3. **Classify by risk, not just by rule.** Rules touching data integrity,
-   authorization, or irreversible actions (e.g. anything police
+   authorization, or irreversible actions (e.g. anything touching sensitive
    case-management data) get flagged for extra scrutiny/tiers in the plan —
    these are exactly the ones that warrant an integration spec, not just a
    unit spec.

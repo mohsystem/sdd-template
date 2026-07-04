@@ -20,7 +20,7 @@ for lint.** See `docs/standards/` for the concrete conventions.
 |---|---|---|---|---|
 | 9:00–10:30 | AI Fundamentals for Developers | — (foundational; no lab) | none | Introduce the idea that "the spec is what the AI reads before it acts" as a preview — don't teach SDD mechanics yet, just plant the phrase. |
 | 10:45–12:30 | Prompt Engineering Fundamentals — *Hands-on: Writing technical prompts* | `spec-driven-development` (read-only, as a worked example of an effective prompt) | none yet | Trainees practice prompt anatomy on a prompt that cites a rule/spec, previewing the pattern every later lab prompt uses. |
-| 1:30–3:00 | AI for Requirements Analysis — *Lab: Analyzing law enforcement use cases* | `requirements-and-gap-analysis` | `docs/specs/spec.md` created, BR-1..BR-n drafted | This is the spec every later lab builds on. Keep it — don't let trainees discard it at day end. |
+| 1:30–3:00 | AI for Requirements Analysis — *Lab: Analyzing real-world use cases* | `requirements-and-gap-analysis` | `docs/specs/spec.md` created, BR-1..BR-n drafted | This is the spec every later lab builds on. Keep it — don't let trainees discard it at day end. |
 | 3:15–5:00 | AI-Powered Documentation — *Lab: Document a legacy system module* | `documentation-generation` | README/inline docs for the legacy module; optionally a proposed spec fragment inferred from that legacy code | If the legacy module is unrelated to the Day 1 spec, keep its inferred BR-IDs in a separate section — don't merge unrelated domains into one spec. |
 
 ## Day 2

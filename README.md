@@ -1,4 +1,4 @@
-# SDD Skills Kit — Police AI Enablement Program
+# SDD Skills Kit — AI Enablement Program
 
 This folder is a **Specification-Driven Development (SDD) skills kit**, not a
 code sample despite the parent folder's name. It exists to weave one
