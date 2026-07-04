@@ -1,0 +1,88 @@
+<!--
+  Copy this file to CLAUDE.md at the root of your lab repo/workspace on
+  Day 1, then fill in the bracketed placeholders. This is Layer 1 of SDD's
+  five governance layers: the file the AI assistant reads first, every
+  session, before it acts. See docs/specs/ and docs/standards/ for what it
+  points to.
+-->
+
+# [Project / Lab Name]
+
+[One paragraph: what this system is, who its users are, and why it exists.
+For a lab exercise this can be as short as: "A Grails case-management
+application for tracking [X]. Built during the AI Enablement program to
+practice spec-driven development across requirements, design, code, test,
+and release."]
+
+## Stack
+
+- **Backend:** Grails [x.y], Groovy, GORM (Hibernate), Spock, CodeNarc.
+- **Frontend:** GSP views rendered server-side, vanilla JavaScript
+  (`grails-app/assets/javascripts/`), semantic HTML5 — no SPA framework.
+- **Build:** Gradle wrapper (`./gradlew`).
+
+## Non-negotiable rules
+
+- No code change begins before `docs/specs/spec.md` reflects it.
+- Every business rule has an ID (`BR-1`, `BR-2`, ...) assigned in the spec
+  before it is implemented.
+- Every BR has at least one Spock feature method named
+  `"BR-n: <short description>"`.
+- Commits that implement or fix a BR cite its ID in the commit message.
+- Business-rule logic lives in the **service layer only**
+  (`grails-app/services/`), annotated `@Transactional` where it mutates
+  state. Controllers (`grails-app/controllers/`) parse input, call a
+  service, and `render`/`respond` — they never call `.save()` or mutate a
+  domain instance directly.
+- GORM domain classes (`grails-app/domain/`) declare `constraints` for every
+  field that has a validation rule in the spec — don't enforce a BR only in
+  Groovy code when a GORM constraint can express it.
+- All dynamic values rendered into GSP go through Grails' auto-encoding
+  (`encodeAsHTML()` / the `<%= %>` default) — no `raw()` on user-supplied or
+  BR-relevant data without an explicit, reviewed reason.
+- Zero CodeNarc violations on changed files (`./gradlew codenarcMain
+  codenarcTest`).
+
+## Where things live (read these before acting)
+
+| Path | What it contains |
+|---|---|
+| `docs/specs/spec.md` | Business rules (BR-IDs), domain model, API contract — the source of truth |
+| `docs/specs/plan.md` | Implementation plan: architecture, layering, task breakdown |
+| `docs/standards/code-style.md` | Naming, structure, and style conventions |
+| `docs/standards/testing-methodology.md` | Test naming convention (`BR-n: ...`) and coverage expectations |
+| `docs/standards/documentation-methodology.md` | What must be documented and where |
+| `docs/standards/review-checklist.md` | What a code review must check before approval |
+| `.claude/skills/` | Reusable expertise for each phase of work (see below) |
+| `.claude/hooks/HOOKS-REFERENCE.md` | Enforcement patterns this project should eventually wire up |
+
+## Skills available in this project
+
+[List the skills relevant to your lab, e.g.:]
+
+- `spec-driven-development` — the overall discipline; read first
+- `requirements-and-gap-analysis` — turning raw asks into BR-IDs
+- `architecture-and-solution-design` — turning a spec into a plan
+- `code-generation-with-specs` — implementing against BR-IDs
+- `debugging-and-error-recovery` — root-causing against the spec
+- `code-review-and-quality` — reviewing against docs/standards/
+- `test-planning`, `test-case-generation` — spec-driven test coverage
+- `defect-analysis-and-triage` — triaging against which BR broke
+- `release-automation-with-specs` — release notes that cite BR-IDs
+- `documentation-generation` — keeping docs in sync with the spec
+
+## Session start checklist (for the AI assistant)
+
+1. Read `docs/specs/spec.md` and `docs/specs/plan.md` if they exist.
+2. Read `docs/standards/` in full.
+3. Before implementing, confirm which BR-ID(s) this change serves. If none
+   exists yet, propose one and update the spec first.
+4. After implementing:
+   - Confirm the corresponding Spock feature method
+     `"BR-n: ..."` exists and passes (`./gradlew test`).
+   - Run `./gradlew codenarcMain codenarcTest` — zero violations on changed
+     files.
+   - Confirm docs/README tables affected by this change are updated.
+   - If GSP/JS was touched, confirm no raw/unencoded output was introduced
+     and no inline `<script>` was added outside
+     `grails-app/assets/javascripts/`.
