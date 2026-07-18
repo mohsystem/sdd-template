@@ -1,6 +1,6 @@
 ---
 name: application-hardening-with-ai
-description: Use during Day 4's Application Hardening lab to find and patch vulnerable dependencies and validate production configuration.
+description: Use when finding and patching vulnerable dependencies and validating production configuration.
 phase: Review
 ---
 
@@ -28,7 +28,7 @@ diligence: run the scan, read the config, fix what's actually flagged.
 4. **Re-run the full test suite after any dependency bump** — a patched
    library can change behavior, not just close a CVE.
 
-## Lab prompt
+## Example prompt
 
 > "Run `./gradlew dependencyCheckAnalyze`, list every HIGH/CRITICAL
 > finding, and propose the minimum safe version bump for each — checking

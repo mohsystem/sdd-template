@@ -1,6 +1,5 @@
-# Implementation Plan — [Project / Lab Name]
+# Implementation Plan — [Project Name]
 
-Produced during: **Day 2, AI-Driven Solution Design lab.**
 Derived from `docs/specs/spec.md` — every section below should trace back to
 one or more BR-IDs. If you can't trace a design decision to a BR, either the
 plan is over-engineering or the spec is missing a rule; fix whichever is

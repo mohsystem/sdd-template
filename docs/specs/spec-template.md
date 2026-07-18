@@ -1,7 +1,7 @@
-# Specification — [Project / Lab Name]
+# Specification — [Project Name]
 
-Produced during: **Day 1, AI-Assisted Requirements Analysis lab.**
-Owner: whoever runs the lab; updated by every trainee session afterward.
+Owner: whoever owns the domain; updated continuously as requirements
+evolve, never treated as a one-time deliverable.
 
 ## 1. Objective
 
@@ -65,16 +65,16 @@ a convenience, never the authority.]
 
 ## 6. Out of scope
 
-[What this spec deliberately does not cover, so gap-analysis in later labs
+[What this spec deliberately does not cover, so later gap-analysis work
 has a documented boundary to check against.]
 
 ## 7. Change log
 
 Every time this spec changes (a new BR, a rule amended), record it here with
-the date and which lab/day drove the change. This is what later labs
-(Solution Design, Code Gen, Defect Analysis, Release Automation) point back
+the date and what drove the change. This is what later work (solution
+design, code generation, defect analysis, release automation) points back
 to.
 
 | Date | Change | Driven by |
 |---|---|---|
-| [YYYY-MM-DD] | Initial spec drafted | Day 1 — Requirements Analysis lab |
+| [YYYY-MM-DD] | Initial spec drafted | Initial requirements analysis |

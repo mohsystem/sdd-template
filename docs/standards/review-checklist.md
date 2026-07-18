@@ -1,7 +1,7 @@
 # Review Checklist Standard
 
-Used during the Day 2 Code Review lab, and by anyone reviewing AI-generated
-changes throughout the program. Every item traces back to a rule in
+Used whenever reviewing AI-generated (or legacy) changes. Every item
+traces back to a rule in
 `code-style.md`, `testing-methodology.md`, or `documentation-methodology.md`
 — if a reviewer wants to add a new check, it belongs in one of those files
 first, then here.
@@ -73,8 +73,8 @@ first, then here.
       declined/rerouted it), confirm the pushback was correct — don't
       silently override it without recording why.
 - [ ] If the assistant complied with something that should have been
-      refused, flag it as a standards-drift instance for the Defect
-      Analysis lab (Day 3) to reference.
+      refused, flag it as a standards-drift instance for future defect
+      analysis to reference.
 
 ## Verdict
 

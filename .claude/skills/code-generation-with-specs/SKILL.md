@@ -1,6 +1,6 @@
 ---
 name: code-generation-with-specs
-description: Use during Day 2's AI-Assisted Code Generation lab to implement against BR-IDs instead of generic prompts, keeping generated code traceable to the spec.
+description: Use when implementing a feature against BR-IDs instead of generic prompts, keeping generated code traceable to the spec.
 phase: Build
 ---
 
@@ -39,12 +39,12 @@ a reviewer can check.
    "which BR(s) does this satisfy, and how." If the assistant can't answer,
    the code probably doesn't actually satisfy them yet.
 
-## Lab prompt
+## Example prompt
 
-See `EXAMPLE-FEATURE-PROMPTS.md` at the kit root for five ready-to-use,
+See `EXAMPLE-FEATURE-PROMPTS.md` at the kit root for six ready-to-use,
 concrete prompts (not bracketed placeholders) built on this exact pattern —
-hand those directly to trainees for this lab. The template below is for
-writing new ones against a different domain.
+use those directly. The template below is for writing new ones against a
+different domain.
 
 > "Implement BR-[n] from `docs/specs/spec.md` in `[ServiceName]`, following
 > the layering in `docs/specs/plan.md` — service method only,

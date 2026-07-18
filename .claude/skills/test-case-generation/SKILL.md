@@ -1,6 +1,6 @@
 ---
 name: test-case-generation
-description: Use during Day 3's Automated Test Case Generation lab to turn a test plan (or existing code) into concrete, correctly-named tests and test data.
+description: Use when turning a test plan (or existing code) into concrete, correctly-named tests and test data.
 phase: Verify
 ---
 
@@ -39,7 +39,7 @@ behavior.
    manual browser check is (this kit doesn't generate a JS test runner
    suite) so it isn't silently skipped.
 
-## Lab prompt
+## Example prompt
 
 > "For each row in the test plan, generate the concrete Spock feature,
 > labeled `\"BR-n: <description>\"`, in the correctly-named spec class.

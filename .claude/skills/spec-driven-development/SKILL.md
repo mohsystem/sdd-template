@@ -1,6 +1,6 @@
 ---
 name: spec-driven-development
-description: Use before starting any new feature, fix, or lab exercise. Establishes the spec-first discipline that every other skill in this kit assumes — read this one first.
+description: Use before starting any new feature or fix. Establishes the spec-first discipline that every other skill in this kit assumes — read this one first.
 phase: Define
 ---
 
@@ -40,10 +40,10 @@ When asked to make a change:
   passes, `./gradlew codenarcMain codenarcTest` is clean, and the relevant
   doc/README sections were updated — don't wait to be asked.
 
-## Lab prompt
+## Example prompt
 
-Use this as the opening prompt for any lab in this program, adapted to that
-day's task:
+Use this as the opening prompt for any new piece of work, adapted to the
+task at hand:
 
 > "Before making this change, check `docs/specs/spec.md` for the relevant
 > business rule. If it doesn't exist yet, propose a BR-ID and rule text

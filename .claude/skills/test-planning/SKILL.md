@@ -1,6 +1,6 @@
 ---
 name: test-planning
-description: Use during Day 3's AI-Accelerated Test Planning lab to build a test strategy that has systematic BR coverage, not ad hoc scenario lists.
+description: Use when building a test strategy that has systematic BR coverage, not ad hoc scenario lists.
 phase: Verify
 ---
 
@@ -39,7 +39,7 @@ needs a plan entry, full stop.
    their own section, since they don't map to a BR-ID directly but still
    need planned coverage.
 
-## Lab prompt
+## Example prompt
 
 > "Using `docs/specs/spec.md`, produce a test plan with one row per BR-ID:
 > what proves it, what would break it (the adversarial case), and which

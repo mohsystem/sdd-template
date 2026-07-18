@@ -1,6 +1,6 @@
 ---
 name: documentation-generation
-description: Use during Day 1's AI-Powered Documentation lab (and any time docs need to be produced/updated) to generate documentation from the spec rather than reverse-engineering it from code alone.
+description: Use any time docs need to be produced/updated, to generate documentation from the spec rather than reverse-engineering it from code alone.
 phase: Build
 ---
 
@@ -22,7 +22,7 @@ against that same intent.
    not generate them from scratch.
 2. **Follow `docs/standards/documentation-methodology.md`** for what must be
    documented and where (README, inline docs, API contract, changelog).
-3. **For legacy Grails modules with no spec yet** (a likely Day 1 lab
+3. **For legacy Grails modules with no spec yet** (a common starting
    scenario): reverse the flow deliberately — ask the assistant to read the
    domain class, service, and controller together and *propose* a spec
    (candidate BR-IDs, inferred GORM constraints) as a documentation
@@ -37,7 +37,7 @@ against that same intent.
    citing the inferred BR-ID — don't just write external prose about a
    method with no inline trace back to it.
 
-## Lab prompt
+## Example prompt
 
 For documenting a legacy Grails module with no existing spec:
 

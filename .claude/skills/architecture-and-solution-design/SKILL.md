@@ -1,6 +1,6 @@
 ---
 name: architecture-and-solution-design
-description: Use during Day 2's AI-Driven Solution Design lab to turn a spec into an implementation plan — architecture, data model, and task breakdown, all traced to BR-IDs.
+description: Use when turning a spec into an implementation plan — architecture, data model, and task breakdown, all traced to BR-IDs.
 phase: Plan
 ---
 
@@ -45,7 +45,7 @@ BR-ID, which service method or GORM constraint enforces it, and which Spock
 feature would prove it?" A plan that can't answer this for every BR isn't
 ready for Code Generation.
 
-## Lab prompt
+## Example prompt
 
 > "Using `docs/specs/spec.md`, propose a Grails MVC design: GORM domain
 > classes with constraints, service methods (with `@Transactional` where

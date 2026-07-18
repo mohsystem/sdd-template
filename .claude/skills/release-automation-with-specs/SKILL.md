@@ -1,6 +1,6 @@
 ---
 name: release-automation-with-specs
-description: Use during Day 3's Release Automation lab to generate deployment scripts and release notes that cite BR-IDs, keeping releases traceable to the spec.
+description: Use when generating deployment scripts and release notes that cite BR-IDs, keeping releases traceable to the spec.
 phase: Ship
 ---
 
@@ -36,7 +36,7 @@ in a typical consumer app.
    X, tested by `\"BR-4: ...\"`" is the deliverable, not just the shipped
    code.
 
-## Lab prompt
+## Example prompt
 
 > "Generate release notes for this release using `docs/specs/spec.md` §7
 > (change log) and the commit history. Separate BR-affecting changes from

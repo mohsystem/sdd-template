@@ -1,6 +1,6 @@
 ---
 name: requirements-and-gap-analysis
-description: Use during Day 1's AI-Assisted Requirements Analysis lab to turn a raw use case into a spec with BR-IDs, and to find gaps a first draft misses.
+description: Use when turning a raw use case into a spec with BR-IDs, and to find gaps a first draft misses.
 phase: Define
 ---
 
@@ -10,7 +10,7 @@ phase: Define
 
 "Code without a spec is guessing." A vague ask ("track custody of
 equipment") has to become measurable, testable rules before any design or
-code work starts — otherwise every later lab (design, code gen, testing) is
+code work starts — otherwise every later step (design, code gen, testing) is
 building on sand.
 
 ## Technique
@@ -42,10 +42,10 @@ building on sand.
 - Data lifecycle (what happens to a record after its use is over — soft
   delete vs. hard delete affects the domain model directly)
 - Which rules need a client-side echo for UX (disabling a button, inline
-  validation message) vs. server-only enforcement — flag these now so the
-  Solution Design lab knows to plan the GSP/JS mirror deliberately.
+  validation message) vs. server-only enforcement — flag these now so
+  solution design plans the GSP/JS mirror deliberately.
 
-## Lab prompt
+## Example prompt
 
 > "Interview me about [the use case] to surface the actors, entity states,
 > and transitions. Then draft `docs/specs/spec.md` using the template in

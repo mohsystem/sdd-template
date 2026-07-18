@@ -42,7 +42,7 @@ class CustodyServiceSpec extends HibernateSpec {
 ```
 
 This is not cosmetic. It's the mechanism that lets:
-- a facilitator (or a hook, in a real repo) find "the test for BR-4" by
+- a developer (or a hook, in a real repo) find "the test for BR-4" by
   searching Spock feature names instead of reading the whole suite,
 - a spec change ("BR-4 now has a 24-hour grace period") map directly to
   "which test do I update" without guessing,
@@ -63,8 +63,8 @@ This is not cosmetic. It's the mechanism that lets:
    violations — a unit spec on the service alone doesn't prove the
    controller wires the 422 correctly.
 5. JS behavior that mirrors a BR client-side (e.g. disabling a submit
-   button) gets a lightweight browser-level check as part of the relevant
-   lab's manual QA pass — this kit doesn't mandate a JS test runner, but
+   button) gets a lightweight browser-level check as part of manual QA —
+   this kit doesn't mandate a JS test runner, but
    any non-trivial JS logic should still be covered, even by a simple
    assertion script loaded in a scratch HTML page during development.
 6. Zero CodeNarc violations (`./gradlew codenarcMain codenarcTest`) — lint

@@ -1,16 +1,15 @@
 # Example Feature Prompts — Hand These to the Team
 
 Six ready-to-use prompts for implementing new features, in increasing
-order of complexity. Use prompts 1-5 during the Day 2 **AI-Assisted Code
-Generation** lab (one per pair/team, or work #1 together live then split
-#2-5 across breakout groups); they're also the subject of Day 3's test
-planning, test generation, and defect-analysis exercises. Prompt 6 is for
-Day 4's **Secure Coding with AI Assistance** lab, and its output becomes
-the target of Day 4's vulnerability-detection and hardening labs.
+order of complexity. Prompts 1-5 exercise the core spec → plan → code →
+test → review loop; they're also good input for later test-planning,
+test-generation, and defect-analysis work. Prompt 6 exercises secure
+coding, and its output becomes a good target for vulnerability-detection
+and hardening work afterward.
 
 Each prompt is copy-pasteable as-is into Claude Code. They assume the
 `spec-driven-development` skill/`CLAUDE.md` discipline is already in place
-in the trainee's workspace (see `README.md` and
+in the project's workspace (see `README.md` and
 `facilitator/FACILITATION-NOTES.md`).
 
 ## Assumed starting point: Equipment Custody Register
@@ -129,8 +128,8 @@ concern — and the difference between "can't" (a state-machine BR) and
 ## Prompt 5 — Custody history and audit trail
 
 **Trains:** GORM associations and modeling an append-only audit concept —
-useful groundwork for Day 3's Defect Analysis lab, which often needs
-exactly this kind of trail to diagnose an incident.
+useful groundwork for defect analysis, which often needs exactly this kind
+of trail to diagnose an incident.
 **Adds:** BR-9, plus a new domain class.
 
 > Add a full custody history view per item: every past checkout/return for
@@ -153,9 +152,9 @@ exactly this kind of trail to diagnose an incident.
 ## Prompt 6 — Secure officer authentication
 
 **Trains:** the `secure-coding-with-ai` skill — authentication/authorization
-as a business rule, built in from the start rather than patched on. Day 4
-warm-up: this feature is what Day 4's vulnerability-detection and
-hardening labs scan and harden.
+as a business rule, built in from the start rather than patched on.
+Complete this before running vulnerability-detection or hardening work —
+this feature is the highest-value target for both.
 **Adds:** BR-10, plus real authentication where none exists today.
 
 > Right now custody actions trust a client-supplied `officerId` with no
@@ -178,24 +177,23 @@ hardening labs scan and harden.
 
 ---
 
-## Facilitator notes
+## Notes
 
-- Prompts 1 and 2 are appropriately scoped for a single lab session each.
-  Prompts 3-5 are meaningfully harder — if time is short, treat 4 and 5 as
-  take-home or Day 3 warm-up exercises instead of same-day Day 2 work.
-- Prompt 6 should land before Day 4 starts (assign it as Day 3 take-home
-  if Day 2 ran long) — Day 4's first three labs all operate on whatever
-  codebase exists by then, and authentication is the highest-value target
-  for a vulnerability scan.
+- Prompts 1 and 2 are quick. Prompts 3-5 are meaningfully harder and
+  usually take longer sessions — budget time accordingly.
+- Complete Prompt 6 before running vulnerability-detection or hardening
+  work — those operate best against a codebase that already has real
+  authentication to scan and harden.
 - Every prompt deliberately withholds the exact BR-ID number and asks the
-  assistant to propose one — this is intentional. Watch whether trainees
-  let the assistant just invent a number without checking
-  `docs/specs/spec.md` for the next unused one; that's a small but real
-  spec-discipline slip worth calling out live.
+  assistant to propose one — this is intentional. Watch whether the
+  assistant just invents a number without checking `docs/specs/spec.md`
+  for the next unused one; that's a small but real spec-discipline slip
+  worth catching.
 - Prompt 4 is the best one to watch for standards drift: a scaffolded or
   under-specified answer often puts the check in the controller or (worse)
   only in the GSP/JS layer. Both are BR-5-style violations even though this
   is a new rule, not one of the original five.
-- All five assume the team is extending one shared app. If running Option
-  B (bring-your-own) from `FACILITATION-NOTES.md`, use these as a pattern
-  to write five equivalent prompts against each team's own domain instead.
+- All six assume a team is extending one shared app. If a team is instead
+  bringing its own existing codebase (see `FACILITATION-NOTES.md`), use
+  these as a pattern to write equivalent prompts against that domain
+  instead.

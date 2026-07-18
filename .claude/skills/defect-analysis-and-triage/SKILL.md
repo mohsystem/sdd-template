@@ -1,6 +1,6 @@
 ---
 name: defect-analysis-and-triage
-description: Use during Day 3's AI-Driven Defect Analysis lab to triage production incidents against BR-IDs — which rule broke, how severe, and what regressed.
+description: Use when triaging production incidents against BR-IDs — which rule broke, how severe, and what regressed.
 phase: Review
 ---
 
@@ -38,7 +38,7 @@ you exactly which existing test *should* have caught it (and didn't).
    confirm their Spock features still pass (`./gradlew test`) — this is
    where AI is genuinely faster than manual cross-referencing.
 
-## Lab prompt
+## Example prompt
 
 > "This incident: [description/logs/stack trace]. Identify which BR-ID in
 > `docs/specs/spec.md` this violates, or state that it's a spec gap. Check

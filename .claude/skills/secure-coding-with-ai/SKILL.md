@@ -1,6 +1,6 @@
 ---
 name: secure-coding-with-ai
-description: Use during Day 4's Secure Coding with AI Assistance lab to build authentication/authorization and input handling correctly from the start, not patch it in later.
+description: Use when building authentication/authorization and input handling correctly from the start, not patching it in later.
 phase: Build
 ---
 
@@ -29,7 +29,7 @@ is meant to catch early.
    feature needs a test proving the wrong role/no-auth case is rejected,
    named for its BR-ID, same as any other rule.
 
-## Lab prompt
+## Example prompt
 
 > "Implement authentication/authorization for `[feature]` following
 > `docs/standards/security-standard.md` §4: Spring Security Core, a

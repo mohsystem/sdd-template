@@ -1,18 +1,16 @@
 <!--
-  Copy this file to CLAUDE.md at the root of your lab repo/workspace on
-  Day 1, then fill in the bracketed placeholders. This is Layer 1 of SDD's
-  five governance layers: the file the AI assistant reads first, every
-  session, before it acts. See docs/specs/ and docs/standards/ for what it
-  points to.
+  Copy this file to CLAUDE.md at the root of the project's repo at kickoff,
+  then fill in the bracketed placeholders. This is Layer 1 of SDD's five
+  governance layers: the file the AI assistant reads first, every session,
+  before it acts. See docs/specs/ and docs/standards/ for what it points to.
 -->
 
-# [Project / Lab Name]
+# [Project Name]
 
 [One paragraph: what this system is, who its users are, and why it exists.
-For a lab exercise this can be as short as: "A Grails case-management
-application for tracking [X]. Built during the AI Enablement program to
-practice spec-driven development across requirements, design, code, test,
-and release."]
+E.g.: "A Grails case-management application for tracking [X], built with
+spec-driven development across requirements, design, code, test, and
+release."]
 
 ## Stack
 
@@ -63,7 +61,7 @@ and release."]
 
 ## Skills available in this project
 
-[List the skills relevant to your lab, e.g.:]
+[List the skills relevant to this project, e.g.:]
 
 - `spec-driven-development` — the overall discipline; read first
 - `requirements-and-gap-analysis` — turning raw asks into BR-IDs

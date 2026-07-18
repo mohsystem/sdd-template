@@ -1,6 +1,6 @@
 ---
 name: code-review-and-quality
-description: Use during Day 2's Enhanced Code Reviews lab to review AI-generated (or legacy) code against docs/standards, catching standards drift review-after-the-fact can miss.
+description: Use when reviewing AI-generated (or legacy) code against docs/standards, catching standards drift review-after-the-fact can miss.
 phase: Review
 ---
 
@@ -40,7 +40,7 @@ a written checklist catches this consistently; reviewing from memory of
    regression, not an improvement. Check traceability even on "just
    cleanup" changes.
 
-## Lab prompt
+## Example prompt
 
 > "Review this change against `docs/standards/review-checklist.md`,
 > including the Grails/Groovy production checks and the GSP/JavaScript

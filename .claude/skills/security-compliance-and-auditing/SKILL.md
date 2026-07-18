@@ -1,6 +1,6 @@
 ---
 name: security-compliance-and-auditing
-description: Use during Day 4's Security Compliance & Auditing lab to map requirements to real evidence in the repo and gate releases on it, instead of writing a narrative audit report from memory.
+description: Use when mapping requirements to real evidence in the repo and gating releases on it, instead of writing a narrative audit report from memory.
 phase: Ship
 ---
 
@@ -33,7 +33,7 @@ business rules.
    report is stale the moment the code it maps to changes without an
    update.
 
-## Lab prompt
+## Example prompt
 
 > "Using `docs/standards/security-standard.md` §5, produce a compliance
 > report for `[requirement set]`: one row per requirement, the actual

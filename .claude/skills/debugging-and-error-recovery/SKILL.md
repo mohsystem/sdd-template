@@ -1,6 +1,6 @@
 ---
 name: debugging-and-error-recovery
-description: Use during Day 2's AI-Powered Debugging lab to root-cause errors against the spec and standards instead of guessing from the stack trace alone.
+description: Use when root-causing errors against the spec and standards instead of guessing from the stack trace alone.
 phase: Verify
 ---
 
@@ -42,7 +42,7 @@ system.
    applying the same layering discipline as code generation, even under bug
    pressure.
 
-## Lab prompt
+## Example prompt
 
 > "This error occurs when [reproduction steps]. First tell me: does this
 > violate an existing BR-ID in `docs/specs/spec.md`, or is it a gap the spec

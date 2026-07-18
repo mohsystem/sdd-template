@@ -189,8 +189,8 @@ waved through.
 ## Pattern 7 — Full verification gate (Stop hook)
 
 Fires once, at the end of the session; doesn't block individual edits but
-gives a final pass/fail signal before the trainee (or facilitator) treats
-the session's work as done.
+gives a final pass/fail signal before the developer treats the session's
+work as done.
 
 ```jsonc
 // .claude/settings.json
@@ -208,13 +208,13 @@ the session's work as done.
 
 Slower than the per-edit hooks above by design — it's meant to catch
 anything the fast, file-scoped hooks missed (e.g. a test broken by a
-change in a different file than the one that triggered Pattern 2). Good
-moment for a facilitator to point out: "the fast hooks kept you moving;
-this one is the actual gate before you call it finished."
+change in a different file than the one that triggered Pattern 2). The
+fast hooks keep you moving; this one is the actual gate before calling
+something finished.
 
-For a Day 4 (Security & DevSecOps) session, extend this same `Stop` hook to
-also run the dependency scan from Pattern 8, so a session doesn't end
-"green" while a known-vulnerable dependency sits unflagged:
+For security-focused work, extend this same `Stop` hook to also run the
+dependency scan from Pattern 8, so a session doesn't end "green" while a
+known-vulnerable dependency sits unflagged:
 
 ```jsonc
 "command": "./gradlew test codenarcMain codenarcTest dependencyCheckAnalyze"
@@ -281,8 +281,8 @@ into a single `Stop` command rather than running two separately.
 
 ## Verifying each hook actually fires
 
-Before trusting any of these in a lab, prove each one blocks what it claims
-to, on purpose:
+Before trusting any of these in a project, prove each one blocks what it
+claims to, on purpose:
 
 | Hook | Trigger a failure by... | Expect |
 |---|---|---|
@@ -297,5 +297,5 @@ to, on purpose:
 | Secret scan (9) | Adding `apiKey = "sk_live_abcdef1234567890"` to any file | Edit blocked, pattern listed |
 
 If a hook doesn't fire when it should, or blocks something it shouldn't,
-fix the hook before the lab — a hook that silently misses its target
-teaches the opposite lesson from the one intended.
+fix the hook before relying on it — a hook that silently misses its target
+gives false confidence, which is worse than no hook at all.

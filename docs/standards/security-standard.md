@@ -1,8 +1,8 @@
 # Security Standard — Grails / Groovy
 
-Shared reference for Day 4 (Security & DevSecOps). The 4 security skills in
+Shared reference for security work. The 4 security skills in
 `.claude/skills/` each point here instead of repeating this content —
-read the relevant table below when a skill's lab prompt tells you to.
+read the relevant table below when a skill's prompt tells you to.
 GSP output-encoding and CSRF rules already live in `code-style.md` — not
 duplicated here.
 
@@ -60,7 +60,7 @@ finding as a release blocker (see Hook Pattern 8 in `HOOKS-REFERENCE.md`) —
 
 ## 5. Compliance mapping and audit reports
 
-For the Day 4 auditing lab, map each control a regulator/standard requires
+For compliance auditing, map each control a regulator/standard requires
 to concrete evidence in this repo:
 
 | Requirement | Control in this repo | Evidence |

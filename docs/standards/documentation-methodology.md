@@ -28,14 +28,13 @@ CheckoutResult checkout(Long officerId, Long itemId, Date dueAt) { ... }
 
 **Documentation updates are never a separate, optional step you do "if there
 is time."** They are part of the same change as the code — same commit where
-practical, same review. If a lab exercise produces a code change without a
-matching doc update, that is an incomplete change, not a finished one with a
-follow-up.
+practical, same review. If a code change ships without a matching doc
+update, that is an incomplete change, not a finished one with a follow-up.
 
 ## Generating docs from the spec, not the other way around
 
-When using AI to produce documentation (the Day 1 Documentation-Generation
-lab), give the assistant the spec and plan as source material and ask it to
+When using AI to produce documentation, give the assistant the spec and
+plan as source material and ask it to
 derive the docs — don't ask it to reverse-engineer docs from code alone and
 then leave the spec stale. The spec is the steering wheel; docs describe
 where it's pointing, not the other way around.
