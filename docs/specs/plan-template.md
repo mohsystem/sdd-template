@@ -13,6 +13,34 @@ progressively enhanced with vanilla JS calling JSON endpoints on the same
 app. State this explicitly per feature if it deviates (e.g. an
 async/queued step).
 
+For anything beyond a single-app project (multiple deployable services,
+external system integrations, more than a couple of consumers), sketch a
+lightweight C4-style diagram so the shape of the system is visible at a
+glance, not just described in prose:
+
+```mermaid
+graph TB
+    User([User]) -->|HTTP| App
+    subgraph App[This Application]
+      Web[Controllers / GSP+JS]
+      Svc[Services]
+      Dom[(GORM domain / PostgreSQL)]
+    end
+    Web --> Svc --> Dom
+    App -->|if applicable| Ext[(External system)]
+```
+
+Keep it to context + one level of containers — this is a working diagram
+to orient a reader, not exhaustive documentation. Update it when the shape
+changes; a stale diagram is worse than no diagram.
+
+If this system talks to external systems, document each integration's
+failure/degradation behavior explicitly (timeout handling, retries,
+what happens when the external system is down) rather than assuming the
+happy path — see `docs/adr/` if the integration approach itself (e.g.
+isolating all calls to one system behind a single adapter module) is a
+decision worth recording.
+
 ## 2. Components
 
 | Component | Grails artifact | Responsibility | BR(s) it must enforce |
@@ -55,3 +83,15 @@ serves and its acceptance/verification step.
 [Anything the spec left ambiguous that this plan had to assume — flag these
 for the spec owner to resolve before Code Generation begins, rather than
 silently encoding an assumption.]
+
+## 7. Architecturally significant decisions
+
+[List any decision from this plan that's costly to reverse, affects
+multiple layers, or changes a cross-cutting concern (a major library
+choice, a data-modeling approach, an auth strategy, a deliberate deviation
+from `docs/standards/`). Each gets its own ADR in `docs/adr/` — link it
+here rather than re-explaining the rationale in the plan.]
+
+| Decision | ADR |
+|---|---|
+| [e.g. chosen caching approach] | [`docs/adr/NNNN-...md`](../adr/README.md) |

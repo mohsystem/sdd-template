@@ -31,11 +31,20 @@ them — and they won't be consistent across the rest of the system.
 4. **Decide the JS/GSP split up front.** Which pages are full GSP renders,
    which actions are enhanced with a `fetch()` call to a JSON endpoint —
    and which BRs get a client-side echo for UX (still enforced server-side).
-5. **Trace every component back to a BR.** If a proposed service method,
+5. **Follow the house style for anything new.** New JSON endpoints follow
+   `docs/standards/api-guidelines.md` (envelope, status codes, pagination);
+   new tables/fields follow `docs/standards/data-architecture.md` (naming,
+   classification, migrations).
+6. **Write an ADR for anything hard to reverse.** A major library choice,
+   a data-modeling approach, an auth strategy, or a deliberate deviation
+   from a standard gets an entry in `docs/adr/` (copy `adr-template.md`) —
+   link it from the plan's "Architecturally significant decisions" section
+   instead of only explaining it inline.
+7. **Trace every component back to a BR.** If a proposed service method,
    endpoint, or GORM field doesn't serve any BR-ID, question whether it
    belongs in this iteration — this is where AI-assisted design tends to
    over-build unless checked against the spec.
-6. **Break the plan into reviewable tasks**, each naming its BR(s) and
+8. **Break the plan into reviewable tasks**, each naming its BR(s) and
    acceptance criterion, using `docs/specs/plan-template.md`.
 
 ## Validating the design before coding starts
@@ -50,6 +59,8 @@ ready for Code Generation.
 > "Using `docs/specs/spec.md`, propose a Grails MVC design: GORM domain
 > classes with constraints, service methods (with `@Transactional` where
 > they mutate state), and which pages are GSP vs. JSON+fetch()-enhanced.
-> State explicitly which layer enforces each BR, then write
+> State explicitly which layer enforces each BR, follow
+> `docs/standards/api-guidelines.md` and `data-architecture.md` for
+> anything new, and flag any decision that needs an ADR. Then write
 > `docs/specs/plan.md` using the plan template, breaking the work into
 > tasks that each cite the BR(s) they serve."

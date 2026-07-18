@@ -44,6 +44,9 @@ release."]
   environment variables or a secrets manager (`docs/standards/security-standard.md`
   §3). No dependency with a known `HIGH`/`CRITICAL` CVE ships
   (`./gradlew dependencyCheckAnalyze`).
+- A decision that's costly to reverse or changes a cross-cutting concern
+  gets an ADR in `docs/adr/` (copy `docs/adr/adr-template.md`) — not just a
+  comment or a PR description.
 
 ## Where things live (read these before acting)
 
@@ -56,6 +59,9 @@ release."]
 | `docs/standards/documentation-methodology.md` | What must be documented and where |
 | `docs/standards/review-checklist.md` | What a code review must check before approval |
 | `docs/standards/security-standard.md` | OWASP Top 10 mapped to this stack, dependency scanning, secrets, auth patterns, compliance mapping |
+| `docs/standards/data-architecture.md` | DB naming/migration conventions, data classification, audit trail pattern |
+| `docs/standards/api-guidelines.md` | JSON API house style: response envelope, status codes, pagination, idempotency |
+| `docs/adr/` | Architecture Decision Records — significant, hard-to-reverse decisions and why they were made |
 | `.claude/skills/` | Reusable expertise for each phase of work (see below) |
 | `.claude/hooks/HOOKS-REFERENCE.md` | Enforcement patterns this project should eventually wire up |
 

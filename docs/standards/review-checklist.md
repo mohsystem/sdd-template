@@ -1,10 +1,10 @@
 # Review Checklist Standard
 
 Used whenever reviewing AI-generated (or legacy) changes. Every item
-traces back to a rule in
-`code-style.md`, `testing-methodology.md`, or `documentation-methodology.md`
-— if a reviewer wants to add a new check, it belongs in one of those files
-first, then here.
+traces back to a rule in `code-style.md`, `testing-methodology.md`,
+`documentation-methodology.md`, `api-guidelines.md`, or
+`data-architecture.md` — if a reviewer wants to add a new check, it
+belongs in one of those files first, then here.
 
 ## Traceability
 
@@ -12,6 +12,10 @@ first, then here.
       doesn't, either the spec is missing a rule or the change is
       out-of-scope creep.
 - [ ] The commit message cites the BR-ID(s) the change serves.
+- [ ] If this change makes a decision that's costly to reverse or changes
+      a cross-cutting concern, it has (or should have) an ADR in
+      `docs/adr/` — don't let a significant decision live only in a PR
+      description.
 
 ## Layering (`code-style.md`)
 
@@ -50,6 +54,19 @@ first, then here.
       bypasses CSRF protection.
 - [ ] Client-side validation mirroring a BR is clearly a UX convenience —
       the service layer still enforces it server-side.
+
+## Architecture & data (`api-guidelines.md`, `data-architecture.md`)
+
+- [ ] New/changed JSON endpoints follow the standard response envelope and
+      status-code conventions — not an ad hoc shape.
+- [ ] New tables/fields follow naming conventions, have a `version` column
+      if mutable, and money (if any) is an integer + currency code, never
+      a float.
+- [ ] Any new schema change shipped via a migration, not a manual DDL
+      change or relying on auto-DDL in a shared environment.
+- [ ] New/changed fields have a data classification (§2 of
+      `data-architecture.md`) and are handled accordingly (encryption,
+      masking, audit) if sensitive.
 
 ## Tests (`testing-methodology.md`)
 

@@ -98,6 +98,43 @@ def checkout() {
   variables (wrap feature scripts in an IIFE or ES module), and prefer
   `const`/`let` over `var`.
 
+## Tactical patterns
+
+- **Typed exception hierarchy for BR violations** — a common
+  `BusinessRuleException` (carrying the BR-ID) rather than generic
+  `RuntimeException` or ad hoc string-matching on messages. A single
+  `@ExceptionHandler`/`ControllerAdvice`-equivalent translates it to the
+  structured 422 error shape once, instead of every controller doing its
+  own try/catch.
+- **Value objects over primitives** — model constrained values
+  (money, a national/reference ID, a slot/time range) as small immutable
+  types (`@groovy.transform.Immutable` or a final class with validation in
+  the constructor) instead of passing raw `String`/`BigDecimal` around.
+  Catches invalid values at construction, not deep in a service method.
+- **Money as integer minor units**, never floating point — store and pass
+  amounts as an integer (cents/fils/etc.) plus a currency code, not a
+  `Double`/`Float`, to avoid rounding-error bugs.
+- **Optimistic locking (`version`)** on any GORM domain class that can be
+  updated concurrently by more than one request — pair with a documented
+  retry/conflict response (409), not a silent last-write-wins.
+
+## Anti-patterns to avoid
+
+- Anemic controllers that contain business logic (see the layering rule
+  above) or, at the other extreme, "god" services/classes that own
+  unrelated responsibilities.
+- Functions longer than ~50 lines or files longer than ~800 lines — split
+  before they grow further, not after.
+- Silent `catch` blocks, or a broad `catch (Exception e) {}` that discards
+  the error instead of handling or rethrowing it.
+- Primitive obsession — raw strings/numbers standing in for a value object
+  that should validate its own invariants (see Tactical patterns above).
+- Leaking GORM domain instances directly to the GSP/JSON response instead
+  of mapping to a DTO/model — couples the wire format to the persistence
+  model and makes both harder to change independently.
+- Storing secrets, PII, or BR-relevant data in logs, URLs, or client-side
+  storage (see `docs/standards/security-standard.md`).
+
 ## What a reviewer checks against this file
 
 See `docs/standards/review-checklist.md` — every item there traces back to a

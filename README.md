@@ -69,7 +69,8 @@ project — that's the throughline this kit is built to support.
 | [`EXAMPLE-FEATURE-PROMPTS.md`](EXAMPLE-FEATURE-PROMPTS.md) | 6 ready-to-use prompts demonstrating SDD-driven feature implementation on a sample Equipment Custody Register domain |
 | [`docs/specs/spec-template.md`](docs/specs/spec-template.md) | BR-ID convention spec template |
 | [`docs/specs/plan-template.md`](docs/specs/plan-template.md) | Implementation plan template |
-| [`docs/standards/`](docs/standards/) | Grails/Groovy/GSP/JS code style, testing methodology (Spock/CodeNarc), doc methodology, review checklist, security standard (OWASP/Grails) |
+| [`docs/standards/`](docs/standards/) | Grails/Groovy/GSP/JS code style (incl. tactical & anti-patterns), testing methodology (Spock/CodeNarc), doc methodology, review checklist, security standard (OWASP/Grails), data architecture, API guidelines |
+| [`docs/adr/`](docs/adr/) | Architecture Decision Record practice — index, self-referential ADR 0001, and a blank template for new decisions |
 | [`.claude/skills/`](.claude/skills/) | 15 skills, one per SDD lifecycle capability, phase-grouped (Define/Plan/Build/Verify/Review/Ship) |
 | [`.claude/hooks/`](.claude/hooks/) | 9 hook patterns (`HOOKS-REFERENCE.md`) — CodeNarc, affected Spock spec, GSP XSS check, doc-sync reminder, controller-mutation guard, BR-ID commit gate, Stop-hook full verification, dependency vulnerability gate, secret scan — 4 ship as real runnable scripts |
 | [`facilitator/`](facilitator/) | Reference notes for structured onboarding, kept separate from the toolkit itself |
