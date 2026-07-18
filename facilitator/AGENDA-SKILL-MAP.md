@@ -1,18 +1,20 @@
 # Agenda → Skill Map
 
-Every row of the pasted 3-day agenda, mapped to the skill(s) in
+Every row of the pasted 4-day agenda, mapped to the skill(s) in
 `.claude/skills/` used during that session, the artifact it produces or
 updates, and how that artifact carries forward. Read this alongside
 `FACILITATION-NOTES.md`.
 
 The throughline: **one spec (`docs/specs/spec.md`), started Day 1 morning,
-accumulates BR-IDs and detail all the way through Day 3 afternoon.** Nothing
-in this program is "done with the spec" until release notes are written.
+accumulates BR-IDs and detail all the way through Day 4 afternoon.** Nothing
+in this program is "done with the spec" until release notes and the
+security compliance report are written.
 
 Stack for every lab from Day 2 onward: **Grails + Groovy backend (GORM
 domain classes, `@Transactional` services, thin controllers), GSP views
 progressively enhanced with vanilla JavaScript, Spock for tests, CodeNarc
-for lint.** See `docs/standards/` for the concrete conventions.
+for lint.** See `docs/standards/` for the concrete conventions, including
+`security-standard.md` for Day 4.
 
 ## Day 1
 
@@ -40,6 +42,15 @@ for lint.** See `docs/standards/` for the concrete conventions.
 | 10:45–12:30 | Automated Test Case Generation — *Lab: Generate test suites for APIs* | `test-case-generation` | Concrete `"BR-n: ..."` Spock features + `where:` boundary test data, generated from the morning's plan | Closes the loop on Day 2's code-generation lab — confirms it actually has BR coverage, not just passing generic tests. |
 | 1:30–3:00 | AI-Driven Defect Analysis — *Lab: Analyze production incidents* | `defect-analysis-and-triage` | Incident triaged to a specific BR-ID (or flagged as a spec gap) using stack traces/Grails failure signatures, regression-risk check across related BR-IDs | If a spec gap is found, `docs/specs/spec.md` gets a new BR — the spec is still growing on the last day. |
 | 3:15–5:00 | Release Automation with AI — *Lab: Automate deployment workflows* | `release-automation-with-specs` | Release notes citing BR-IDs from the spec's change log; CI/deploy pipeline reviewed for full `./gradlew test codenarcMain codenarcTest` coverage and schema migrations | Closing artifact for the whole program — the spec's change log (§7) should now read as a full history of the week. |
+
+## Day 4
+
+| Time | Topic / Lab | Skill(s) | Artifact produced/updated | Carries forward as |
+|---|---|---|---|---|
+| 9:00–10:30 | AI for Vulnerability Detection — *Lab: Scan and fix security issues* | `vulnerability-detection-with-ai` | Findings classified against `docs/standards/security-standard.md` §1 (OWASP Top 10), each fixed in the correct layer with a proving test (`"BR-n: ..."` or `"SEC: ..."`) | Feeds `security-compliance-and-auditing`'s evidence table this afternoon. |
+| 10:45–12:30 | Secure Coding with AI Assistance — *Lab: Implement secure authentication* | `secure-coding-with-ai` + `EXAMPLE-FEATURE-PROMPTS.md` Prompt 6 | Spring Security Core auth, a new BR-ID for the access rule, allowed/denied Spock features | Becomes the primary target for this afternoon's hardening and this morning's vulnerability-scan labs if run out of order. |
+| 1:30–3:00 | Application Hardening with AI — *Lab: Harden a web application* | `application-hardening-with-ai` | `./gradlew dependencyCheckAnalyze` triage, dependency version bumps, verified production config (`security-standard.md` §1 A05) | Dependency scan becomes part of the release gate (Hook Pattern 8) referenced this afternoon. |
+| 3:15–5:00 | Security Compliance & Auditing — *Lab: Create security compliance reports* | `security-compliance-and-auditing` | Filled-in compliance mapping table (`security-standard.md` §5): requirement → control → evidence | Closing artifact for the whole program, alongside Day 3's release notes — both should cite the same BR-IDs and CI evidence. |
 
 ## Facilitator note on gaps in the mapping
 

@@ -7,10 +7,11 @@ the edit instead of just guiding it. **Verify each one actually fires**
 after wiring it into a real repo (run a trivial edit and confirm the
 command runs) — a hook that silently doesn't run is worse than no hook.
 
-Patterns 2, 5, and 6 ship with real, runnable scripts in this directory
+Patterns 2, 5, 6, and 9 ship with real, runnable scripts in this directory
 (`run-affected-spec.js`, `controller-mutation-guard.js`,
-`check-br-commit.js`) — not just described in prose. Patterns 1, 3, 4, and
-7 are single-line commands you paste directly into `settings.json`.
+`check-br-commit.js`, `secret-scan.js`) — not just described in prose.
+Patterns 1, 3, 4, 7, and 8 are single-line commands you paste directly
+into `settings.json`.
 
 ## Pattern 1 — CodeNarc on changed files
 
@@ -211,15 +212,72 @@ change in a different file than the one that triggered Pattern 2). Good
 moment for a facilitator to point out: "the fast hooks kept you moving;
 this one is the actual gate before you call it finished."
 
+For a Day 4 (Security & DevSecOps) session, extend this same `Stop` hook to
+also run the dependency scan from Pattern 8, so a session doesn't end
+"green" while a known-vulnerable dependency sits unflagged:
+
+```jsonc
+"command": "./gradlew test codenarcMain codenarcTest dependencyCheckAnalyze"
+```
+
+## Pattern 8 — Dependency vulnerability gate
+
+Fires before a release (wire as a `Stop` hook, or a separate release-time
+check); fails on `HIGH`/`CRITICAL` findings from the OWASP Dependency-Check
+Gradle plugin. See `docs/standards/security-standard.md` §2 for setup and
+triage guidance.
+
+```jsonc
+// .claude/settings.json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "command": "./gradlew dependencyCheckAnalyze",
+        "description": "Fail on HIGH/CRITICAL dependency vulnerabilities before ending the session"
+      }
+    ]
+  }
+}
+```
+
+## Pattern 9 — Secret scan on changed files
+
+Fires after any edit; blocks it if the file looks like it introduced a
+hardcoded credential. Mechanizes `docs/standards/security-standard.md` §3.
+
+```jsonc
+// .claude/settings.json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "node .claude/hooks/secret-scan.js \"$FILE_PATH\"",
+        "description": "Block edits that introduce hardcoded credentials"
+      }
+    ]
+  }
+}
+```
+
+`secret-scan.js` (in this directory) checks for common credential patterns
+(AWS keys, private key blocks, GitHub tokens, generic `password = "..."`
+literals). Like the controller mutation guard, it's a heuristic safety
+net, not a substitute for not writing secrets in the first place — and a
+clean scan is not proof a file has no secret.
+
 ## Ordering
 
 Recommended order for `PostToolUse` hooks: CodeNarc first (fastest, catches
 style issues before running tests), controller mutation guard second (also
-fast, no test run), affected Spock spec third, GSP/JS safety check fourth
-(only relevant on frontend files), doc-sync reminder last (non-blocking, so
-it shouldn't gate anything ahead of it). The BR-commit gate is a
-`PreToolUse` hook on `Bash`, independent of this ordering. The full
-verification gate is a `Stop` hook and runs once, at session end.
+fast, no test run), secret scan third (also fast, no test run), affected
+Spock spec fourth, GSP/JS safety check fifth (only relevant on frontend
+files), doc-sync reminder last (non-blocking, so it shouldn't gate anything
+ahead of it). The BR-commit gate is a `PreToolUse` hook on `Bash`,
+independent of this ordering. The full verification gate and dependency
+gate are both `Stop` hooks and run once, at session end — combine them
+into a single `Stop` command rather than running two separately.
 
 ## Verifying each hook actually fires
 
@@ -235,6 +293,8 @@ to, on purpose:
 | Controller mutation guard (5) | Adding `equipment.save()` to a controller action | Edit blocked, violation listed |
 | BR-commit gate (6) | `git commit -m "fix stuff"` after staging a service change | Commit blocked, exit code 2 |
 | Full verification (7) | Ending a session with a failing test | Stop hook output shows the failure |
+| Dependency gate (8) | Adding a dependency with a known HIGH/CRITICAL CVE to `build.gradle` | Stop hook fails, CVE listed |
+| Secret scan (9) | Adding `apiKey = "sk_live_abcdef1234567890"` to any file | Edit blocked, pattern listed |
 
 If a hook doesn't fire when it should, or blocks something it shouldn't,
 fix the hook before the lab — a hook that silently misses its target

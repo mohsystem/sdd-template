@@ -1,11 +1,12 @@
 # Example Feature Prompts — Hand These to the Team
 
-Five ready-to-use prompts for implementing new features, in increasing
-order of complexity. Use them during the Day 2 **AI-Assisted Code
+Six ready-to-use prompts for implementing new features, in increasing
+order of complexity. Use prompts 1-5 during the Day 2 **AI-Assisted Code
 Generation** lab (one per pair/team, or work #1 together live then split
-#2-5 across breakout groups), and again on Day 3 as the subject of test
-planning, test generation, and defect-analysis exercises — the features
-built here are what those later labs operate on.
+#2-5 across breakout groups); they're also the subject of Day 3's test
+planning, test generation, and defect-analysis exercises. Prompt 6 is for
+Day 4's **Secure Coding with AI Assistance** lab, and its output becomes
+the target of Day 4's vulnerability-detection and hardening labs.
 
 Each prompt is copy-pasteable as-is into Claude Code. They assume the
 `spec-driven-development` skill/`CLAUDE.md` discipline is already in place
@@ -149,6 +150,32 @@ exactly this kind of trail to diagnose an incident.
 > history through `CustodyService` alongside the existing
 > checkout/return methods — never as a separate, forgettable step.
 
+## Prompt 6 — Secure officer authentication
+
+**Trains:** the `secure-coding-with-ai` skill — authentication/authorization
+as a business rule, built in from the start rather than patched on. Day 4
+warm-up: this feature is what Day 4's vulnerability-detection and
+hardening labs scan and harden.
+**Adds:** BR-10, plus real authentication where none exists today.
+
+> Right now custody actions trust a client-supplied `officerId` with no
+> real authentication behind it. Add proper login: officers authenticate
+> with a username and password (Spring Security Core, `bcrypt`-hashed
+> storage — never plaintext or a custom hash), and every custody action
+> uses the currently-authenticated officer instead of trusting a
+> client-supplied ID. Reject unauthenticated requests to any custody
+> mutation with 401, in the same structured error shape as our BR
+> violations.
+>
+> Update `docs/specs/spec.md` with a new BR-ID stating that custody
+> mutations require an authenticated officer, per
+> `docs/standards/security-standard.md` §4. Write Spock features for:
+> authenticated success, unauthenticated rejection, and wrong-password
+> rejection. Implement the check in `CustodyService`, not as a filter that
+> only some controllers remember to apply. Run the secret-scan hook
+> mentally as you work — no password or secret literal belongs in the
+> code, only in externalized config.
+
 ---
 
 ## Facilitator notes
@@ -156,6 +183,10 @@ exactly this kind of trail to diagnose an incident.
 - Prompts 1 and 2 are appropriately scoped for a single lab session each.
   Prompts 3-5 are meaningfully harder — if time is short, treat 4 and 5 as
   take-home or Day 3 warm-up exercises instead of same-day Day 2 work.
+- Prompt 6 should land before Day 4 starts (assign it as Day 3 take-home
+  if Day 2 ran long) — Day 4's first three labs all operate on whatever
+  codebase exists by then, and authentication is the highest-value target
+  for a vulnerability scan.
 - Every prompt deliberately withholds the exact BR-ID number and asks the
   assistant to propose one — this is intentional. Watch whether trainees
   let the assistant just invent a number without checking

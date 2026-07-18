@@ -42,6 +42,10 @@ and release."]
   BR-relevant data without an explicit, reviewed reason.
 - Zero CodeNarc violations on changed files (`./gradlew codenarcMain
   codenarcTest`).
+- No hardcoded credentials/API keys/connection strings — externalize via
+  environment variables or a secrets manager (`docs/standards/security-standard.md`
+  §3). No dependency with a known `HIGH`/`CRITICAL` CVE ships
+  (`./gradlew dependencyCheckAnalyze`).
 
 ## Where things live (read these before acting)
 
@@ -53,6 +57,7 @@ and release."]
 | `docs/standards/testing-methodology.md` | Test naming convention (`BR-n: ...`) and coverage expectations |
 | `docs/standards/documentation-methodology.md` | What must be documented and where |
 | `docs/standards/review-checklist.md` | What a code review must check before approval |
+| `docs/standards/security-standard.md` | OWASP Top 10 mapped to this stack, dependency scanning, secrets, auth patterns, compliance mapping |
 | `.claude/skills/` | Reusable expertise for each phase of work (see below) |
 | `.claude/hooks/HOOKS-REFERENCE.md` | Enforcement patterns this project should eventually wire up |
 
@@ -70,6 +75,10 @@ and release."]
 - `defect-analysis-and-triage` — triaging against which BR broke
 - `release-automation-with-specs` — release notes that cite BR-IDs
 - `documentation-generation` — keeping docs in sync with the spec
+- `vulnerability-detection-with-ai` — scanning for OWASP Top 10 issues
+- `secure-coding-with-ai` — building auth/input handling in from the start
+- `application-hardening-with-ai` — dependency scanning, config validation
+- `security-compliance-and-auditing` — mapping requirements to real evidence
 
 ## Session start checklist (for the AI assistant)
 
